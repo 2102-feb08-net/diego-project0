@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameZoneStore", "GameZoneStore\GameZoneStore.csproj", "{48A3C457-4940-46BD-9B23-30048C13D601}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{C1D271A2-0288-4C22-9885-0ABD65EC90CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Test", "Core.Test\Core.Test.csproj", "{B3C6938F-E9BA-483C-8A4B-3DFFE4E19B4A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{48A3C457-4940-46BD-9B23-30048C13D601}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48A3C457-4940-46BD-9B23-30048C13D601}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48A3C457-4940-46BD-9B23-30048C13D601}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48A3C457-4940-46BD-9B23-30048C13D601}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1D271A2-0288-4C22-9885-0ABD65EC90CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1D271A2-0288-4C22-9885-0ABD65EC90CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1D271A2-0288-4C22-9885-0ABD65EC90CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1D271A2-0288-4C22-9885-0ABD65EC90CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3C6938F-E9BA-483C-8A4B-3DFFE4E19B4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3C6938F-E9BA-483C-8A4B-3DFFE4E19B4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3C6938F-E9BA-483C-8A4B-3DFFE4E19B4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3C6938F-E9BA-483C-8A4B-3DFFE4E19B4A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DFDE2B23-F49C-428B-8365-57346AFEB412}
+	EndGlobalSection
+EndGlobal
