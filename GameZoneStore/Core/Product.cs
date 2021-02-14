@@ -4,7 +4,14 @@ using System.Text;
 
 namespace Core
 {
-    class Product
+    internal class Product
     {
+        public string Type { get; set; }
+        public string Name { get; set; }
+        public int Id { get; set; }
+        public double Price { get; set; }
+
+
+
     }
 }
