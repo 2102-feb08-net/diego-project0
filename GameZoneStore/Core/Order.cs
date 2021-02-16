@@ -22,34 +22,33 @@ namespace Core
         }
 
         // AddProduct(): Add different types of products to the order
-        // CheckProductQuantity(): Helper method of AddProduct(). Currently checks product of same type and name does not have more than 10 occurences. 
-        //                         Otherwise, it rejects the order. 
-        public void AddProduct(string kind, string name, int id, double cost)
+        public void AddProduct(string kind, string name, int id, double cost, int quantity)
         {
-            CheckProductQuantity();
-
             Product item = new Product();
             item.Type = kind;
             item.Name = name;
             item.Id = id;
             item.Price = cost;
+            item.Quantity = quantity;
+
             products.Add(item);
 
         }
 
+        // CheckProductQuantity(): Checks quantity of all products is less than 10 and calls method RejectOrder() if
+        //                         quantity of product is eqaul or greater than 10. 
         public void CheckProductQuantity()
         {
-            if (products.Count != 0)
+            foreach (Product item in products)
             {
-               foreach(Product p in products)
+                if (item.Quantity >= 10)
                 {
-                    if (p.Quantity >= 10)
-                    {
-                        RejectOrder(p.Name, p.Type);
-                    }
+                    RejectOrder(item.Name, item.Type);
                 }
             }
         }
+
+        
 
         // Currently erases all items of a list
         public void RejectOrder(string itemName, string itemTag)
