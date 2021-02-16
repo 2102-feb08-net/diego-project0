@@ -9,17 +9,21 @@ namespace Core
         private DateTime _ordertime;
         private List<Product> products = new List<Product>();
 
+
+        // Retrieve List of products in order
+        public List<Product> Products { get; }
+
         // Retrieve and set the time of order placement
         public DateTime OrderTime
         {
-            get { return _ordertime;}
+            get { return _ordertime; }
 
-            set { _ordertime = value;}
+            set { _ordertime = value; }
         }
 
         // AddProduct(): Add different types of products to the order
         // CheckProductQuantity(): Helper method of AddProduct(). Currently checks product of same type and name does not have more than 10 occurences. 
-        //                         Otherwise, it rejects the order. Will later use inventory of Location as a constraint rather than the 10 occurences in list.
+        //                         Otherwise, it rejects the order. 
         public void AddProduct(string kind, string name, int id, double cost)
         {
             CheckProductQuantity();
@@ -37,22 +41,11 @@ namespace Core
         {
             if (products.Count != 0)
             {
-                int duplicateCount = 0;
-
-                foreach (Product p1 in products)
+               foreach(Product p in products)
                 {
-                    foreach (Product p2 in products)
+                    if (p.Quantity >= 10)
                     {
-                        if (p2.Name.Equals(p1.Name) && p2.Type.Equals(p1.Type))
-                        {
-                            duplicateCount++;
-
-                            if (duplicateCount == 10)
-                            {
-                                RejectOrder(p1.Name, p1.Type);
-                            }
-
-                        }
+                        RejectOrder(p.Name, p.Type);
                     }
                 }
             }
