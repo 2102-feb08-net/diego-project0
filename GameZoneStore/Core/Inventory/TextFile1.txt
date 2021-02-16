@@ -1,0 +1,5 @@
+﻿Address: 192382 Mesa Hills Dr, Suite 5, Los Angeles, California 45532
+Inventory: 
+Type:Game Title, Name:Super Mario 3D Land, ID:14253, Price:59.99, Quantity:50.
+Type:Console, Name:Nintendo Switch, ID:54323, Price:59.99, Quantity:30.
+Type:Accessories, Name:Joycon (L&R) Blue, ID:97578, Price:59.99, Quantity:10.
