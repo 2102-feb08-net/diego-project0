@@ -45,15 +45,13 @@ namespace Core
 
         // Update inventory. 
         // Remove items in inventory as orders are processed and approved
-        public void UpdateInventory(Order order)
+        public void UpdateInventory(List<Product> order)
         {
-            // Get list of products in order
-            List<Product> ticket = order.Products;
-
+            
             // Remove quantity of a specific product in inventory based on order
             foreach (Product item in inventory)
             {
-                foreach(Product customerItem in ticket)
+                foreach(Product customerItem in order)
                 {
                     if(item.Id == customerItem.Id && item.Quantity > 0)
                     {
@@ -69,11 +67,11 @@ namespace Core
         }
 
         // Reject Order
-        // Cancel an order due to shortage of specific item
-        public void RejectOrder(String item, Order order)
+        // Cancel an order due to shortage of specific item in inventory
+        public void RejectOrder(String item, List<Product> order)
         {
             Console.WriteLine("Order has been rejected due to the following out of stock item: " + item);
-            order.Products.Clear();
+            order.Clear();
         }
     }
 }
