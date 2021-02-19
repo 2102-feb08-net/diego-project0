@@ -4,7 +4,18 @@ using System.Text;
 
 namespace Core
 {
-    class StoreHistory
+    interface StoreHistory
     {
+        // Show Customer History
+        public void ShowOrderHistory()
+        {
+
+        }
+
+        // Search for a specific customer order history by name
+        public void SearchByName()
+        {
+
+        }
     }
 }
