@@ -23,20 +23,18 @@ namespace Core
         }
 
         // Save Customer Information
-        public Customer CustomerName
+        public void SetCustomerName (String fullname)
         {
-            get
-            {
-                return _customerName;
-            }
-            set
-            {
-                string fullname = value.ToString();
-                string[] separateName = fullname.Split(' ');
-                _customerName.FirstName = separateName[0];
-                _customerName.LastName = separateName[1];
-            }
+            string[] separateName = fullname.Split(' ');
+            _customerName.FirstName = separateName[0];
+            _customerName.LastName = separateName[1];
         }
+        // Get Customer Information
+        public Customer getCustomerName()
+        {
+            return _customerName;
+        }
+
 
         // AddProduct(): Add different types of products to the order
         public void AddProduct(string kind, string name, int id, double cost, int quantity)
