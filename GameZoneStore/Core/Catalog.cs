@@ -33,7 +33,7 @@ namespace Core
             {
                 cashier.OrderSummary(cart);
                 cart.SetCustomerName(customerName);
-                cashier.PlaceOrder(cart); 
+                cashier.PlaceOrder(cart, defaultLocation); 
             }
         }
 

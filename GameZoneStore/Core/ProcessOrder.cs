@@ -38,11 +38,15 @@ namespace Core
         }
 
         // Place Order
-        public void PlaceOrder(Order cart)
+        public void PlaceOrder(Order cart, Location localStore)
         {
             // Save customer information
+            StoreCustomerHistory customerRecord = new StoreCustomerHistory();
+            customerRecord.AddCustomer(cart.getCustomerName());
 
             // Save/update retail store information
+            StoreLocationHistory localRecord = new StoreLocationHistory();
+            localRecord.UpdateLocationInventory(localStore);
 
             // Order Placement Confirmation
             Console.WriteLine("Your order has been placed! Your package sould arrive between 3 and 5 days.");
