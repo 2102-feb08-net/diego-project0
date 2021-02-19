@@ -46,13 +46,13 @@ namespace Core
         {
             foreach (Product p in _inventory)
             {
-                Console.WriteLine(p.Id + "\t" + p.Type + "\t" + p.Name + "\t" + p.Quantity);
+                Console.WriteLine("Product id: " + p.Id + "\tType: " + p.Type + "\tName: " + p.Name + "\tQuantity" + p.Quantity);
             }
         }
 
         // Update inventory. 
         // Remove items in inventory as orders are processed and approved
-        public void UpdateInventory(List<Product> order)
+        public bool IsInventoryUpdated(List<Product> order)
         {
             
             // Remove quantity of a specific product in inventory based on order
@@ -60,16 +60,19 @@ namespace Core
             {
                 foreach(Product customerItem in order)
                 {
-                    if(item.Id == customerItem.Id && item.Quantity > 0)
+                    if(item.Id == customerItem.Id && ((item.Quantity - customerItem.Quantity) > 0))
                     {
-                        item.Quantity -= 1 ; 
+                        item.Quantity -= customerItem.Quantity;
                     }
                     else
                     {
                         RejectOrder(customerItem.Name, order);
+                        return false;
                     }
                 }
             }
+            
+            return true;
             
         }
 
