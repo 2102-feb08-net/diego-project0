@@ -7,12 +7,10 @@ namespace Core
 {
     class Location
     {
-        private List<Product> inventory = new List<Product>();
-        private string address;
+        private List<Product> _inventory = new List<Product>();
+        public String Address { get; set; }
+        public List<Product> Inventory { get { return _inventory; } }
 
-        public List<Product> Inventory { get { return inventory; } }
-
-        public string Address { get; set; }
 
         // Retrieve inventory
         public void RetrieveInventory()
@@ -39,8 +37,17 @@ namespace Core
             productDetails.Price = double.Parse(inventoryProduct[3]);
             productDetails.Quantity = int.Parse(inventoryProduct[(inventoryProduct.Length - 1)]);
 
-            inventory.Add(productDetails);
+            _inventory.Add(productDetails);
 
+        }
+
+        // Check remaining inventory
+        public void InventorySummary()
+        {
+            foreach (Product p in _inventory)
+            {
+                Console.WriteLine(p.Id + "\t" + p.Type + "\t" + p.Name + "\t" + p.Quantity);
+            }
         }
 
         // Update inventory. 
@@ -49,7 +56,7 @@ namespace Core
         {
             
             // Remove quantity of a specific product in inventory based on order
-            foreach (Product item in inventory)
+            foreach (Product item in _inventory)
             {
                 foreach(Product customerItem in order)
                 {
