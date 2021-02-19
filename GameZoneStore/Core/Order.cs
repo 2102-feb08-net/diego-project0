@@ -6,9 +6,10 @@ namespace Core
 {
     internal class Order
     {
+        private List<Product> _products = new List<Product>();
+        private Customer _customerName = new Customer();
         private DateTime _ordertime;
-        private List<Product> products = new List<Product>();
-
+        public String StoreLocation {get; set; }
 
         // Retrieve List of products in order
         public List<Product> Products { get; }
@@ -21,6 +22,22 @@ namespace Core
             set { _ordertime = value; }
         }
 
+        // Save Customer Information
+        public Customer CustomerName
+        {
+            get
+            {
+                return _customerName;
+            }
+            set
+            {
+                string fullname = value.ToString();
+                string[] separateName = fullname.Split(' ');
+                _customerName.FirstName = separateName[0];
+                _customerName.LastName = separateName[1];
+            }
+        }
+
         // AddProduct(): Add different types of products to the order
         public void AddProduct(string kind, string name, int id, double cost, int quantity)
         {
@@ -31,7 +48,7 @@ namespace Core
             item.Price = cost;
             item.Quantity = quantity;
 
-            products.Add(item);
+            _products.Add(item);
 
         }
 
@@ -39,7 +56,7 @@ namespace Core
         //                         quantity of product is eqaul or greater than 10. 
         public void CheckProductQuantity()
         {
-            foreach (Product item in products)
+            foreach (Product item in _products)
             {
                 if (item.Quantity >= 10)
                 {
@@ -57,7 +74,7 @@ namespace Core
                                "\nOrder has been rejected and deleted. Please check the quanity limits and " +
                                "availability tags to avoid this situation in the future" +
                                "Thank you for visiting GameZone.");
-            products.Clear();
+            _products.Clear();
         }
 
 
