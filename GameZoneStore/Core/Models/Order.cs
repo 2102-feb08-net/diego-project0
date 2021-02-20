@@ -6,55 +6,38 @@ namespace Core
 {
     internal class Order
     {
-        private List<Product> _products = new List<Product>();
-        private Customer _customerName = new Customer();
-        private DateTime _ordertime;
+        // Order ID
+        public int OrderID { get; set; }
+        
+        // Customer ID
+        public int CustomerID { set; get; }
+        
+        // Customer cart
+        private List<Product> _cart = new List<Product>();
+        public List<Product> Cart { get { return _cart; } }
+        
+        // Customer name
+        private String CustomerName { get; set; }
+        
+        // Time Of Order
+        private DateTimeOffset _ordertime;
+        public DateTimeOffset OrderTime { get { return _ordertime; } }
+        
+        // Store Location
         public String StoreLocation {get; set; }
 
-        // Retrieve List of products in order
-        public List<Product> Products { get; }
-
-        // Retrieve and set the time of order placement
-        public DateTime OrderTime
+        
+        // Add product to customer cart
+        public void SetCart(Product item)
         {
-            get { return _ordertime; }
-
-            set { _ordertime = value; }
-        }
-
-        // Save Customer Information
-        public void SetCustomerName (String fullname)
-        {
-            string[] separateName = fullname.Split(' ');
-            _customerName.FirstName = separateName[0];
-            _customerName.LastName = separateName[1];
-        }
-        // Get Customer Information
-        public Customer getCustomerName()
-        {
-            return _customerName;
-        }
-
-
-        // AddProduct(): Add different types of products to the order
-        public void AddProduct(string kind, string name, int id, double cost, int quantity)
-        {
-            Product item = new Product();
-            item.Type = kind;
-            item.Name = name;
-            item.Id = id;
-            item.Price = cost;
-            item.Quantity = quantity;
-
-            _products.Add(item);
-
+            _cart.Add(item);
         }
 
         // CheckProductQuantity(): Checks quantity of all products is less than 10 and calls method RejectOrder() if
         //                         quantity of product is eqaul or greater than 10. 
         public void CheckProductQuantity()
         {
-            foreach (Product item in _products)
+            foreach (Product item in _cart)
             {
                 if (item.Quantity >= 10)
                 {
@@ -63,8 +46,6 @@ namespace Core
             }
         }
 
-        
-
         // Currently erases all items of a list
         public void RejectOrder(string itemName, string itemTag)
         {
@@ -72,7 +53,7 @@ namespace Core
                                "\nOrder has been rejected and deleted. Please check the quanity limits and " +
                                "availability tags to avoid this situation in the future" +
                                "Thank you for visiting GameZone.");
-            _products.Clear();
+            _cart.Clear();
         }
 
 
