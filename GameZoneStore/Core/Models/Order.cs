@@ -28,7 +28,7 @@ namespace Core
 
         
         // Add product to customer cart
-        public void SetCart(Product item)
+        public void AddToCart(Product item)
         {
             _cart.Add(item);
         }
