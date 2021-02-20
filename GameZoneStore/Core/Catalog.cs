@@ -6,35 +6,59 @@ namespace Core
 {
     class Catalog
     {
-        // Order
-        private Order cart = new Order();
-        // Location
-        private Location defaultLocation = new Location();
+        //Location
+        Location localStore = new Location();
+        // Customer Order
+        private Order _customerOrder = new Order();
         // Catalog
         private List<Product> catalog = new List<Product>();
-        // Data Access Catalog Repo
-
-        // Change Location
         
-        // Display Catalog
-
-        // Browse by category
-        
-        // Add to cart
-        public void AddToCart(Product item)
+        // Display popular items
+        public void DisplayPopularItems()
         {
-            cart.AddProduct(item.Type, item.Name, item.Id, item.Price, item.Quantity);
+            foreach(Product item in localStore.Inventory)
+            {
+                if(item.Quantity > 0 && item.Quantity < 20)
+                {
+                    Console.WriteLine("Name: " + item.Name + "\t" + item.Id + "\t" + item.Price);
+                }
+            }
+        }
+        
+        // Display items by category
+        public void FilterByCategory(String category)
+        {
+            foreach (Product item in localStore.Inventory)
+            {
+                if (item.Quantity > 0 && item.Type.Equals(category) )
+                {
+                    Console.WriteLine("Name: " + item.Name + "\t" + item.Id + "\t" + item.Price);
+                }
+            }
         }
 
-        // Check out
-        public void CheckOut(ProcessOrder cashier, String customerName)
+        // Add catalog item to cart
+        public void AddToOrder(int productId)
         {
-            if(cashier.IsOrderValid(cart, defaultLocation))
+            Product catalogItem = new Product();
+            foreach (Product item in localStore.Inventory)
             {
-                cashier.OrderSummary(cart);
-                cart.SetCustomerName(customerName);
-                cashier.PlaceOrder(cart, defaultLocation); 
+                if(item.Id == productId)
+                {
+                    catalogItem = item;
+                    break;
+                }
             }
+            
+            _customerOrder.AddToCart(catalogItem);
+        }
+
+        // Begin order transaction 
+        public ProcessOrder GoToOrder()
+        {
+            ProcessOrder cartTransaction = new ProcessOrder();
+            return cartTransaction;
+
         }
 
     }
