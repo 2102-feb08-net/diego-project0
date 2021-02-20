@@ -18,11 +18,11 @@ namespace Core
 
         }
 
-        // Update location inventory in DB
-        public void UpdateLocationInventory(Location localStore)
-        {
+        //// Update location inventory in DB
+        //public void UpdateLocationInventory(Location localStore)
+        //{
 
-        }
+        //}
 
     }
 }
