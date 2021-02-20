@@ -52,7 +52,7 @@ namespace Core
 
         // Update inventory. 
         // Remove items in inventory as orders are processed and approved
-        public bool IsInventoryUpdated(List<Product> order)
+        public bool UpdateInventory(List<Product> order)
         {
             
             // Remove quantity of a specific product in inventory based on order
