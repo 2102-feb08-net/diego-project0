@@ -17,11 +17,11 @@ namespace Core
         public List<Product> Cart { get { return _cart; } }
         
         // Customer name
-        private String CustomerName { get; set; }
+        public String CustomerName { get; set; }
         
         // Time Of Order
         private DateTimeOffset _ordertime;
-        public DateTimeOffset OrderTime { get { return _ordertime; } }
+        public DateTimeOffset OrderTime { set { _ordertime = value; } }
         
         // Store Location
         public String StoreLocation {get; set; }
@@ -35,15 +35,20 @@ namespace Core
 
         // CheckProductQuantity(): Checks quantity of all products is less than 10 and calls method RejectOrder() if
         //                         quantity of product is eqaul or greater than 10. 
-        public void CheckProductQuantity()
+        public bool CheckProductQuantity()
         {
             foreach (Product item in _cart)
             {
                 if (item.Quantity >= 10)
                 {
                     RejectOrder(item.Name, item.Type);
+                    return false;
                 }
+
             }
+
+            return true;
+
         }
 
         // Currently erases all items of a list
