@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Core
 {
-    class Location
+    public class Location
     {
         private List<Product> _inventory = new List<Product>();
         public List<Product> Inventory { get { return _inventory; } }
-        public String Address { get; set; }
+        public string Address { get; set; }
         public int Id { get; set; }
 
         //// Retrieve inventory (from text file)
@@ -78,7 +78,7 @@ namespace Core
 
         // Reject Order
         // Cancel an order due to shortage of specific item in inventory
-        public void RejectOrder(String item, List<Product> order)
+        public void RejectOrder(string item, List<Product> order)
         {
             Console.WriteLine("Order has been rejected due to the following out of stock item: " + item);
             order.Clear();

@@ -4,8 +4,8 @@ namespace Core
 {
     public class Customer
     {
-        public String FirstName { get; set; }
-        public String LastName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public int CustomerId { get; set; }
     }
 }

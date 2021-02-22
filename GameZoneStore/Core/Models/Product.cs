@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Core
 {
-    internal class Product
+    public class Product
     {
         public string Type { get; set; }
         public string Name { get; set; }

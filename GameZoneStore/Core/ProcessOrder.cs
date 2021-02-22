@@ -33,7 +33,7 @@ namespace Core
             
         }
 
-        //// Order Summary
+        // Order Summary
         public void OrderSummary(Order customerCart)
         {
             double orderTotal = 0.0;           
@@ -44,7 +44,7 @@ namespace Core
                 Console.WriteLine("Item: " + item.Name + "\tQuantity: " + item.Quantity + "\tPrice: " + item.Price);
             }
 
-            Console.WriteLine("Total: $" + String.Format("{0:0.00}", orderTotal));
+            Console.WriteLine("Total: $" + string.Format("{0:0.00}", orderTotal));
 
         }
 

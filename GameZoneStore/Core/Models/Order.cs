@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Core
 {
-    internal class Order
+    public class Order
     {
         // Order ID
         public int OrderID { get; set; }
@@ -17,14 +17,14 @@ namespace Core
         public List<Product> Cart { get { return _cart; } }
         
         // Customer name
-        public String CustomerName { get; set; }
+        public string CustomerName { get; set; }
         
         // Time Of Order
         private DateTimeOffset _ordertime;
         public DateTimeOffset OrderTime { set { _ordertime = value; } }
         
         // Store Location
-        public String StoreLocation {get; set; }
+        public string StoreLocation {get; set; }
 
         
         // Add product to customer cart

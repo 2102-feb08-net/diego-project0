@@ -26,7 +26,7 @@ namespace Core
         }
         
         // Display items by category
-        public void FilterByCategory(String category)
+        public void FilterByCategory(string category)
         {
             foreach (Product item in localStore.Inventory)
             {
@@ -50,6 +50,8 @@ namespace Core
                 }
             }
             
+            // TODO Allow user to specify amount of selected item
+
             _customerOrder.AddToCart(catalogItem);
         }
 
