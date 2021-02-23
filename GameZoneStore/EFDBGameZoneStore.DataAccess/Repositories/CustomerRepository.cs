@@ -20,7 +20,7 @@ namespace EFDBGameZoneStore.DataAccess.Repositories
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
-        // Get all products from GameZone Database
+        // Add customer to GameZone Database
         public void AddCustomer(Core.Customer cust)
         {
             var entity = new Customer
@@ -31,6 +31,20 @@ namespace EFDBGameZoneStore.DataAccess.Repositories
 
             _dbContext.Add(entity);
         }
+
+        // Show list of customers
+        public IEnumerable<Core.Customer> GetCustomers()
+        {
+            IQueryable<Customer> customers = _dbContext.Customers;
+
+            return customers.Select(c => new Core.Customer
+            {
+                Id = c.CustomerId, 
+                FirstName = c.FistName, 
+                LastName = c.LastName
+            }).ToList();
+
+        } 
 
         // Save changes to database
         public void Save()

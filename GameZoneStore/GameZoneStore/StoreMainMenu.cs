@@ -39,6 +39,11 @@ namespace GameZoneStore
                     RegisterCustomer(customerRepository);
                 }
 
+                else if (userInput.Equals("GList Customers"))
+                {
+                    ShowCustomers(customerRepository);
+                }
+
                 else if(userInput.Equals("GShow Products"))
                 {
                     ShowProducts(productRepository);
@@ -46,7 +51,10 @@ namespace GameZoneStore
 
                 else
                 {
-                    Console.WriteLine("Invalid command. Type GHelp to list menu commands.\n");
+                    if (!userInput.Equals("GQuit"))
+                    {
+                        Console.WriteLine("Invalid command. Type GHelp to list menu commands.\n");
+                    }
                 }
             }
         }
@@ -59,6 +67,7 @@ namespace GameZoneStore
             Console.WriteLine("List of commands");
             Console.WriteLine("GHelp - Shows menu commands.");
             Console.WriteLine("GAdd Customer <first name> <lastname> - adds a customer to our records.");
+            Console.WriteLine("GList Customers - Shows a list of all customers in our records.");
             Console.WriteLine("GShow Products - shows the products in our store.");
             Console.WriteLine("GAdd To Cart <item name> <quantity> - adds a product to the order with specified quantity");
             Console.WriteLine("GReview Order - shows a summary of the items in the order.");
@@ -92,10 +101,18 @@ namespace GameZoneStore
             Customer newCustomer = new Customer(firstName, lastName);
 
             customer.AddCustomer(newCustomer);
-
             customer.Save();
-
             Console.WriteLine("Customer added successfully.");
+        }
+
+        // Show customers
+        public void ShowCustomers(ICustomerRepository customer)
+        {
+            foreach(Customer c in customer.GetCustomers().ToList())
+            {
+                Console.WriteLine("Id: " + c.Id + "\tFirst Name: " + c.FirstName + "\tLast Name: " + c.LastName);
+            }
+            Console.WriteLine();
         }
 
         // Show products
@@ -103,7 +120,7 @@ namespace GameZoneStore
         {
             foreach(Product p in products.GetProducts().ToList())
             {
-                Console.WriteLine("\tId: " + p.Id + "Type: " + p.Type + "\tName: " + p.Name + "\tPrice: " + p.Price);
+                Console.WriteLine("Id: " + p.Id + "\tType: " + p.Type + "\tName: " + p.Name + "\tPrice: " + p.Price);
             }
             Console.WriteLine();
         }

@@ -6,7 +6,12 @@ namespace Core
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public int Id { get; set; }
 
+        public Customer()
+        {
+        }
+        
         public Customer(string firstName, string lastName)
         {
             if (ValidateName(firstName, lastName))
