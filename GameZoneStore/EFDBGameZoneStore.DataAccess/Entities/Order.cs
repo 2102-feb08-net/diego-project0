@@ -14,9 +14,6 @@ namespace EFDBGameZoneStore.DataAccess.Entities
 
         public int OrderId { get; set; }
         public int CustomerId { get; set; }
-        public string CustomerFirstName { get; set; }
-        public string CustomerLastName { get; set; }
-        public string OrderLocationAddress { get; set; }
         public DateTime OrderDate { get; set; }
 
         public virtual Customer Customer { get; set; }

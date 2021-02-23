@@ -30,9 +30,7 @@ namespace EFDBGameZoneStore.DataAccess.Entities
             {
                 entity.ToTable("Customer", "GZStore");
 
-                entity.Property(e => e.CustomerId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("CustomerID");
+                entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
                 entity.Property(e => e.FistName)
                     .IsRequired()
@@ -49,30 +47,15 @@ namespace EFDBGameZoneStore.DataAccess.Entities
 
                 entity.HasIndex(e => e.CustomerId, "IFK_CustomerId");
 
-                entity.Property(e => e.OrderId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("OrderID");
-
-                entity.Property(e => e.CustomerFirstName)
-                    .IsRequired()
-                    .HasMaxLength(100);
+                entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
-                entity.Property(e => e.CustomerLastName)
-                    .IsRequired()
-                    .HasMaxLength(100);
-
                 entity.Property(e => e.OrderDate).HasColumnType("datetime");
-
-                entity.Property(e => e.OrderLocationAddress)
-                    .IsRequired()
-                    .HasMaxLength(100);
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustomerId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_CustomerId");
             });
 
@@ -84,9 +67,7 @@ namespace EFDBGameZoneStore.DataAccess.Entities
 
                 entity.HasIndex(e => e.ProductId, "IFK_ProductId");
 
-                entity.Property(e => e.OrderDetailId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("OrderDetailID");
+                entity.Property(e => e.OrderDetailId).HasColumnName("OrderDetailID");
 
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
@@ -97,13 +78,11 @@ namespace EFDBGameZoneStore.DataAccess.Entities
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.OrderDetails)
                     .HasForeignKey(d => d.OrderId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_OrderId");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.OrderDetails)
                     .HasForeignKey(d => d.ProductId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_ProductId");
             });
 
@@ -111,9 +90,7 @@ namespace EFDBGameZoneStore.DataAccess.Entities
             {
                 entity.ToTable("Product", "GZStore");
 
-                entity.Property(e => e.ProductId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ProductID");
+                entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
                 entity.Property(e => e.Name)
                     .IsRequired()

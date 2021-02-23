@@ -26,8 +26,7 @@ namespace EFDBGameZoneStore.DataAccess.Repositories
             var entity = new Customer
             {
                 FistName = cust.FirstName,
-                LastName = cust.LastName,
-                CustomerId = cust.CustomerId
+                LastName = cust.LastName
             };
 
             _dbContext.Add(entity);
