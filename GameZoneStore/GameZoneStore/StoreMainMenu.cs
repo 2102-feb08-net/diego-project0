@@ -17,6 +17,7 @@ namespace GameZoneStore
             using var setup = new Setup();
             // Get repositories
             ICustomerRepository customerRepository = setup.CreateCustomerRepository();
+            IProductRepository productRepository = setup.CreateProductRepository();
 
             WelcomeMenu();
 
@@ -38,9 +39,14 @@ namespace GameZoneStore
                     RegisterCustomer(customerRepository);
                 }
 
+                else if(userInput.Equals("GShow Products"))
+                {
+                    ShowProducts(productRepository);
+                }
+
                 else
                 {
-                    Console.WriteLine("Invalid command. Type GHelp to list menu commands.");
+                    Console.WriteLine("Invalid command. Type GHelp to list menu commands.\n");
                 }
             }
         }
@@ -93,7 +99,14 @@ namespace GameZoneStore
         }
 
         // Show products
-
+        public void ShowProducts(IProductRepository products)
+        {
+            foreach(Product p in products.GetProducts().ToList())
+            {
+                Console.WriteLine("\tId: " + p.Id + "Type: " + p.Type + "\tName: " + p.Name + "\tPrice: " + p.Price);
+            }
+            Console.WriteLine();
+        }
         // Add To Order
 
         // Review Order

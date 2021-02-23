@@ -36,6 +36,14 @@ namespace GameZoneStore
             return new CustomerRepository(dbContext);
         }
 
+        // Product Repository
+        public IProductRepository CreateProductRepository()
+        {
+            var dbContext = CreateDbContext();
+            _disposableInterfaces.Add(dbContext);
+            return new ProductRepository(dbContext); 
+        }
+
         public void Dispose()
         {
             Dispose(true);
