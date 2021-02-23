@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Interfaces;
+using System;
 
 namespace GameZoneStore
 {
@@ -6,10 +7,11 @@ namespace GameZoneStore
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // Start Store menu
+            StoreMainMenu mainMenu = new StoreMainMenu();
+            mainMenu.RunMainMenu();
 
-            // Refer to IView intrface for commands
-            // Commands: List Stores, Display current store, List Inventory, Make Order
         }
+
     }
 }

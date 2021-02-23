@@ -8,24 +8,55 @@ using EFDBGameZoneStore.DataAccess.Entities;
 using EFDBGameZoneStore.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Core.Interfaces;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace GameZoneStore
 {
-    class Setup
+    public class Setup : IDesignTimeDbContextFactory<project0rincongamezonestoreContext>, IDisposable
     {
-        // Create DBContextOptions
-        public project0rincongamezonestoreContext CreateContext()
-        {
-            string connectionString = File.ReadAllText("C:/revature/Connection/connection.txt");
-            DbContextOptionsBuilder<project0rincongamezonestoreContext> contextOptionsBuilder = new DbContextOptionsBuilder<project0rincongamezonestoreContext>().UseSqlServer(connectionString);
+        private bool _disposed = false;
+        private readonly List<IDisposable> _disposableInterfaces = new List<IDisposable>();
 
-            return new project0rincongamezonestoreContext(contextOptionsBuilder.Options);
+        // Create DBContextOptionsBuilder
+        public project0rincongamezonestoreContext CreateDbContext(string[] args = null)
+        {
+            var builder = new DbContextOptionsBuilder<project0rincongamezonestoreContext>();
+            string connectionString = File.ReadAllText("C:/revature/Connection/connection.txt");
+
+            builder.UseSqlServer(connectionString);
+            
+            return new project0rincongamezonestoreContext(builder.Options);
         }
 
+        // Customer Repository
         public ICustomerRepository CreateCustomerRepository()
         {
-            var dbContext = CreateContext();
+            var dbContext = CreateDbContext();
+            _disposableInterfaces.Add(dbContext);
             return new CustomerRepository(dbContext);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    // Release of managed resources
+                    foreach (IDisposable disposable in _disposableInterfaces)
+                    {
+                        disposable.Dispose();
+                    }
+                }
+                // Release of unmanaged resources
+                _disposed = true;
+            }
         }
 
     }
