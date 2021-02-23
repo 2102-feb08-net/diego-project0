@@ -37,23 +37,23 @@ namespace Core
             }
         }
 
-        // Add catalog item to cart
-        public void AddToOrder(int productId)
-        {
-            Product catalogItem = new Product();
-            foreach (Product item in localStore.Inventory)
-            {
-                if(item.Id == productId)
-                {
-                    catalogItem = item;
-                    break;
-                }
-            }
+        //// Add catalog item to cart
+        //public void AddToOrder(int productId)
+        //{
+        //    Product catalogItem = new Product();
+        //    foreach (Product item in localStore.Inventory)
+        //    {
+        //        if(item.Id == productId)
+        //        {
+        //            catalogItem = item;
+        //            break;
+        //        }
+        //    }
             
-            // TODO Allow user to specify amount of selected item
+        //    // TODO Allow user to specify amount of selected item
 
-            _customerOrder.AddToCart(catalogItem);
-        }
+        //    _customerOrder.AddToCart(catalogItem);
+        //}
 
         // Begin order transaction 
         public ProcessOrder GoToOrder()
