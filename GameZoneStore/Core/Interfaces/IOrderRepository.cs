@@ -10,15 +10,14 @@ namespace Core.Interfaces
     {
         // Customer
         // Add customer order to order table
-        public void AddCustomerOrder(Order customerOrder);
-        // Look for the order history of a specific customer by providing an id
-        public IEnumerable<Order> getOrderByCustomerId(int customerId);
-        // Look for the order history of a specific customer by providing its fullname
-        public IEnumerable<Order> getOrderByCustomerName(string fullname);
+        public void AddOrder(Order customerOrder);
+        // Get Order id based on a specific customer id
+        public int GetOrderIdByCustomerId(int customerId);
+        // Add customer order details to order table 
+        public void AddOrderDetails(Order customerOrder, int orderId);
+        // Display orders of a specific customer
+        public IEnumerable<Order> GetCustomerOrderDetails();
 
-        // Location
-        // Add customer order to locationorder table
-        public void AddOrderToLocation(Order customerOrder);
-
+        public void Save();
     }
 }

@@ -16,16 +16,13 @@ namespace Core
         {
         }
 
-        public Product(string type, string name, int id, decimal price)
-        {
-            Type = type ?? "None";
-            Name = name;
-            Id = id;
-            Price = price;
-        }
-
         public Product(string type, string name, int id, decimal price, int quantity)
         {
+            if (quantity <= 0)
+            {
+                throw new ArgumentNullException("Quantity of product must be greater than 0.", nameof(quantity));
+            }
+            
             Type = type ?? "None";
             Name = name;
             Id = id;

@@ -11,6 +11,9 @@ namespace Core.Interfaces
         // Add Customer to Database
         public void AddCustomer(Customer cust);
 
+        // Get customer given the first name and id
+        public Customer GetCustomer(string fname, int id);
+
         // Save changes to Database
         public IEnumerable<Customer> GetCustomers();
 

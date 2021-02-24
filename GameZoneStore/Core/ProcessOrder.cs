@@ -19,19 +19,19 @@ namespace Core
         //    localCustomer.CustomerId = rand.Next(1, 50000);
         //}
 
-        // Review Order
-        public bool ValidateOrder(Order customerCart, Location localRetail)
-        {
-            // Check product quantity in order
-            // Check inventory product availability for products in the order
-            if (customerCart.CheckProductQuantity() && localRetail.UpdateInventory(customerCart.Cart))
-            {
-                return true;
-            }
+        //// Review Order
+        //public bool ValidateOrder(Order customerCart, Location localRetail)
+        //{
+        //    // Check product quantity in order
+        //    // Check inventory product availability for products in the order
+        //    if (customerCart.CheckProductQuantity() && localRetail.UpdateInventory(customerCart.Cart))
+        //    {
+        //        return true;
+        //    }
             
-            return false;
+        //    return false;
             
-        }
+        //}
 
         // Order Summary
         //public void OrderSummary(Order customerCart)
