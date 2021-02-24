@@ -51,7 +51,7 @@ namespace EFDBGameZoneStore.DataAccess.Entities
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
-                entity.Property(e => e.OrderDate).HasColumnType("datetime");
+                entity.Property(e => e.OrderTotal).HasColumnType("numeric(10, 2)");
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Orders)
@@ -73,7 +73,7 @@ namespace EFDBGameZoneStore.DataAccess.Entities
 
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
-                entity.Property(e => e.UnitPrice).HasColumnType("numeric(10, 2)");
+                entity.Property(e => e.TotalPrice).HasColumnType("numeric(10, 2)");
 
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.OrderDetails)

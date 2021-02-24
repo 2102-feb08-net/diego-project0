@@ -14,7 +14,8 @@ namespace EFDBGameZoneStore.DataAccess.Entities
 
         public int OrderId { get; set; }
         public int CustomerId { get; set; }
-        public DateTime OrderDate { get; set; }
+        public DateTimeOffset OrderDate { get; set; }
+        public decimal OrderTotal { get; set; }
 
         public virtual Customer Customer { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }

@@ -32,6 +32,18 @@ namespace EFDBGameZoneStore.DataAccess.Repositories
             _dbContext.Add(entity);
         }
 
+        // Get customer given its first name and id
+        public Core.Customer GetCustomer(string fname, int id)
+        {
+            Customer customer = _dbContext.Customers.Find(id);
+
+            return new Core.Customer { 
+                Id = customer.CustomerId,
+                FirstName = customer.FistName, 
+                LastName = customer.LastName
+            };
+        }
+
         // Show list of customers
         public IEnumerable<Core.Customer> GetCustomers()
         {
