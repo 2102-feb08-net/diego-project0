@@ -4,14 +4,29 @@ namespace Core
 {
     public class Customer
     {
+        /// <summary>
+        /// Customer First Name.
+        /// </summary>
         public string FirstName { get; set; }
+        /// <summary>
+        /// Customer Last Name.
+        /// </summary>
         public string LastName { get; set; }
+        /// <summary>
+        /// Customer Id.
+        /// </summary>
         public int Id { get; set; }
-
+        
+        /// <summary>
+        /// Empty Constructor for queries. 
+        /// </summary>
         public Customer()
         {
         }
         
+        /// <summary>
+        /// Constructor for use of UI.
+        /// </summary>
         public Customer(string firstName, string lastName)
         {
             if (ValidateName(firstName, lastName))
@@ -22,6 +37,9 @@ namespace Core
 
         }
 
+        /// <summary>
+        /// Validate first name and last name provided by user input.
+        /// </summary>
         public bool ValidateName(string fname, string lname)
         {
             // Validate customer name

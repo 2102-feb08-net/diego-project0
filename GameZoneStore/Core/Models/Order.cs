@@ -6,29 +6,43 @@ namespace Core
 {
     public class Order
     {
-        // Order ID
+        /// <summary>
+        /// Order ID.
+        /// </summary>
         public int OrderID { get; set; }
-        
-        // Customer ID
+
+        /// <summary>
+        /// Customer ID.
+        /// </summary>
         public int CustomerID { set; get; }
         
-        // Customer cart
+        /// <summary>
+        /// Dictionary containing customer order products.
+        /// </summary>
         private Dictionary<Product, int> _cart = new Dictionary<Product, int>();
         public Dictionary<Product, int> Cart { get { return _cart; } }
         
-        // Time Of Order
+        /// <summary>
+        /// Time the order was placed.
+        /// </summary>
         private DateTimeOffset _ordertime;
         public DateTimeOffset OrderTime { set { _ordertime = value; } get { return _ordertime; } }
         
-        // Order total
+        /// <summary>
+        /// Order total.
+        /// </summary>
         public decimal Total { get; set; }
 
-
+        /// <summary>
+        /// Constructor for the use of queries.
+        /// </summary>
         public Order()
         {
         }
 
-        // Add product to customer cart
+        /// <summary>
+        /// Add product to customer order.
+        /// </summary>
         public void AddToCart(Product item, int productQuantity)
         {
             if (productQuantity >= 1)
@@ -46,8 +60,10 @@ namespace Core
 
         }
 
-        // CheckProductQuantity(): Checks quantity of all products is less than 10 and calls method RejectOrder() if
-        //                         quantity of product is eqaul or greater than 10. 
+        /// <summary>
+        /// Checks quantity of all products in customer order is less than 10 and calls method RejectOrder() if
+        /// quantity of product is equal or greater than 10.
+        /// </summary>
         public bool CheckProductQuantity()
         {
             foreach (var item in _cart)
@@ -65,6 +81,9 @@ namespace Core
         }
 
         // Currently erases all items of a list
+        /// <summary>
+        /// Removes all products from the customer order.
+        /// </summary>
         public void RejectOrder(string itemName, string itemTag)
         {
             Console.WriteLine("Order has exceeded limit for item " + itemName + " from " + itemTag + " section" +
@@ -75,6 +94,9 @@ namespace Core
         }
 
         // Order Summary
+        /// <summary>
+        /// Displays a summary of all the products in the customer order.
+        /// </summary>
         public void OrderSummary()
         {
             decimal total = 0;

@@ -8,13 +8,19 @@ namespace Core.Interfaces
 {
     public interface ICustomerRepository
     {
-        // Add Customer to Database
+        /// <summary>
+        /// Add Customer to Database.
+        /// </summary>
         public void AddCustomer(Customer cust);
 
-        // Get customer given the first name and id
+        /// <summary>
+        /// Get customer from database given the first name and id.
+        /// </summary>
         public Customer GetCustomer(string fname, int id);
 
-        // Save changes to Database
+        /// <summary>
+        /// Save changes to Database.
+        /// </summary>
         public IEnumerable<Customer> GetCustomers();
 
         public void Save();

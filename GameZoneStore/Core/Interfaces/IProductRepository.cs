@@ -8,10 +8,14 @@ namespace Core.Interfaces
 {
     public interface IProductRepository
     {
-        // Get all Products from Database
+        /// <summary>
+        /// Get all Products from Database.
+        /// </summary> 
         public IEnumerable<Product> GetProducts();
 
-        // Save changes to database
+        /// <summary>
+        /// Save changes to database.
+        /// </summary>
         public void Save();
     }
 }

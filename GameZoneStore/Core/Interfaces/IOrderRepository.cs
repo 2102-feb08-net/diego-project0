@@ -9,15 +9,30 @@ namespace Core.Interfaces
     public interface IOrderRepository
     {
         // Customer
-        // Add customer order to order table
+        /// <summary>
+        /// Add customer order to database order table.
+        /// </summary>
+        /// <param name="customerOrder"></param>
         public void AddOrder(Order customerOrder);
-        // Get Order id based on a specific customer id
+
+        /// <summary>
+        /// Get Order id from database based on a specific customer id.
+        /// </summary>
         public int GetOrderIdByCustomerId(int customerId);
-        // Add customer order details to order table 
+
+        ///<summary>
+        /// Add customer order details to database orderdetails table.
+        ///</summary>
         public void AddOrderDetails(Order customerOrder, int orderId);
-        // Display orders of a specific customer
+
+        /// <summary>
+        /// Display all orders from database.
+        /// </summary>
         public IEnumerable<Order> GetCustomerOrderDetails();
 
+        /// <summary>
+        /// Save changes to Database.
+        /// </summary>
         public void Save();
     }
 }
